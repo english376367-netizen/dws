@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Grammar Practice – Nouns, Verbs, Adjectives & Adverbs</title>
+<style>
+:root{--blue:#2563eb;--green:#16a34a;--red:#dc2626;--orange:#f59e0b;--ink:#172033;--muted:#64748b;--bg:#f5f7fb;--card:#fff;--line:#dbe3ef}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.55}
+header{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;padding:28px 18px;text-align:center}
+header h1{margin:0 0 6px;font-size:28px} header p{margin:0;opacity:.92}
+.container{max-width:1050px;margin:20px auto;padding:0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin:18px 0;box-shadow:0 5px 18px rgba(15,23,42,.06)}
+h2{font-size:21px;margin:0 0 8px;color:#1d4ed8} h3{margin:20px 0 8px}
+.note{background:#eff6ff;border-left:5px solid var(--blue);padding:12px 14px;border-radius:8px;margin:10px 0 18px}
+.instructions{color:var(--muted);margin-top:0}
+button{border:0;border-radius:10px;padding:11px 16px;font-weight:700;cursor:pointer;background:var(--blue);color:#fff;margin:8px 6px 0 0}
+button:hover{filter:brightness(.95)} .reset{background:#64748b}.showall{background:#7c3aed}
+.score{display:inline-block;margin:8px 0 0;padding:9px 13px;border-radius:10px;background:#f1f5f9;font-weight:700}
+.q{padding:14px 0;border-bottom:1px dashed var(--line)} .q:last-child{border-bottom:0}
+.qnum{font-weight:700;margin-bottom:7px}
+label.option{display:inline-flex;align-items:center;gap:7px;margin:5px 10px 5px 0;padding:7px 10px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:#fff}
+label.option:hover{background:#f8fafc}
+input[type=text], textarea{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}
+textarea{min-height:62px;resize:vertical}
+.feedback{display:none;margin-top:9px;padding:10px 12px;border-radius:9px}
+.feedback.ok{display:block;background:#ecfdf5;color:#166534;border:1px solid #86efac}
+.feedback.bad{display:block;background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.answer{margin-top:7px;color:#334155}.explain{margin-top:5px;color:#475569}
+table{width:100%;border-collapse:collapse;margin:10px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left}th{background:#eff6ff}
+.wordbank{font-weight:700;background:#f8fafc;border:1px solid var(--line);padding:12px;border-radius:10px}
+.small{font-size:13px;color:var(--muted)}
+.total{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;font-weight:800}
+details{margin-top:8px} summary{cursor:pointer;font-weight:700;color:#475569}
+.correct{border-color:#86efac!important;background:#f0fdf4!important}.incorrect{border-color:#fca5a5!important;background:#fef2f2!important}
+@media(max-width:650px){header h1{font-size:23px}.card{padding:16px}.option{width:100%;margin-right:0!important}.container{padding:0 9px}button{width:100%;margin-right:0}}
+</style>
+</head>
+<body>
+<header>
+<h1>IELTS Grammar Practice</h1>
+<p>Nouns • Verb Patterns • Adjectives & Adverbs • Word Forms</p>
+</header>
+<div class="container">
+<div class="total">Overall progress: <span id="overall">0 / 0</span></div>
+
+<section class="card" id="ex1">
+<h2>Exercise 1. Countable or Uncountable Nouns</h2>
+<p class="instructions">Choose the correct category for each noun. After checking, read the Vietnamese explanation under each answer.</p>
+<div id="nounQuestions"></div>
+<button onclick="grade1()">Check Exercise 1</button><button class="reset" onclick="resetSection('ex1')">Reset</button>
+<div id="score1" class="score"></div>
+</section>
+
+<section class="card" id="ex2">
+<h2>Exercise 2. Correct the Mistake</h2>
+<p class="instructions">Each sentence contains ONE mistake. Rewrite the sentence correctly.</p>
+<div id="ex2q"></div>
+<button onclick="gradeText('ex2')">Check Exercise 2</button><button class="reset" onclick="resetSection('ex2')">Reset</button>
+<div id="score2" class="score"></div>
+</section>
+
+<section class="card" id="ex3">
+<h2>Exercise 3. Translate into English</h2>
+<p class="instructions">Translate each phrase into natural English. Minor punctuation differences are accepted.</p>
+<div id="ex3q"></div>
+<button onclick="gradeText('ex3')">Check Exercise 3</button><button class="reset" onclick="resetSection('ex3')">Reset</button>
+<div id="score3" class="score"></div>
+</section>
+
+<section class="card" id="ex4">
+<h2>Exercise 4. Verb Patterns</h2>
+<p class="instructions">Each sentence contains ONE verb-pattern mistake. Rewrite it correctly.</p>
+<div id="ex4q"></div>
+<button onclick="gradeText('ex4')">Check Exercise 4</button><button class="reset" onclick="resetSection('ex4')">Reset</button>
+<div id="score4" class="score"></div>
+</section>
+
+<section class="card" id="ex5">
+<h2>Exercise 5. Make Complete Sentences</h2>
+<p class="instructions">Put the words in the correct order and add prepositions or grammatical words when necessary.</p>
+<div id="ex5q"></div>
+<button onclick="gradeText('ex5')">Check Exercise 5</button><button class="reset" onclick="resetSection('ex5')">Reset</button>
+<div id="score5" class="score"></div>
+</section>
+
+<section class="card" id="ex6">
+<h2>Exercise 6. Choose the Correct Word Form</h2>
+<p class="instructions">Choose the adjective or adverb that fits the sentence.</p>
+<div id="ex6q"></div>
+<button onclick="grade6()">Check Exercise 6</button><button class="reset" onclick="resetSection('ex6')">Reset</button>
+<div id="score6" class="score"></div>
+</section>
+
+<section class="card" id="ex7">
+<h2>Exercise 7. Translate into English – Change Word Form if Necessary</h2>
+<p class="instructions">Translate the sentences into English using the given vocabulary.</p>
+<div id="ex7q"></div>
+<button onclick="gradeText('ex7')">Check Exercise 7</button><button class="reset" onclick="resetSection('ex7')">Reset</button>
+<div id="score7" class="score"></div>
+</section>
+
+<section class="card" id="ex8">
+<h2>Exercise 8. -ed or -ing Adjectives</h2>
+<p class="instructions">Choose the correct form.</p>
+<div id="ex8q"></div>
+<button onclick="grade8()">Check Exercise 8</button><button class="reset" onclick="resetSection('ex8')">Reset</button>
+<div id="score8" class="score"></div>
+</section>
+
+<section class="card" id="ex9">
+<h2>Exercise 9. Mixed Translation Practice</h2>
+<p class="instructions">Translate each sentence into English. Change word forms when necessary.</p>
+<div id="ex9q"></div>
+<button onclick="gradeText('ex9')">Check Exercise 9</button><button class="reset" onclick="resetSection('ex9')">Reset</button>
+<div id="score9" class="score"></div>
+</section>
+
+<section class="card">
+<h2>Quick Grammar Review</h2>
+<table>
+<tr><th>Pattern</th><th>Rule</th><th>Example</th></tr>
+<tr><td>enjoy / avoid / consider / practice</td><td>+ V-ing</td><td>She enjoys <b>reading</b>.</td></tr>
+<tr><td>decide / want / need / manage</td><td>+ to + V</td><td>He decided <b>to leave</b>.</td></tr>
+<tr><td>be busy</td><td>+ V-ing / with + noun</td><td>They are busy <b>working</b>.</td></tr>
+<tr><td>be used to</td><td>+ V-ing / noun</td><td>I'm used to <b>working</b> late.</td></tr>
+<tr><td>adjective + noun</td><td>Adjective describes a noun</td><td>a <b>significant</b> increase</td></tr>
+<tr><td>verb + adverb</td><td>Adverb describes an action</td><td>increase <b>significantly</b></td></tr>
+<tr><td>-ed</td><td>Feeling/state of a person</td><td>I am <b>bored</b>.</td></tr>
+<tr><td>-ing</td><td>Thing/person that causes the feeling</td><td>The film is <b>boring</b>.</td></tr>
+</table>
+</section>
+</div>
+
+<script>
+const data = {
+ex1: [
+["equipment","uncountable"],["tree","countable"],["news","uncountable"],["chair","countable"],
+["transportation","uncountable"],["furniture","uncountable"],["person","countable"],["money","uncountable"],
+["Physics","uncountable"],["rice","uncountable"],["sunshine","uncountable"],["experience","uncountable"],
+["advice","uncountable"],["happiness","uncountable"],["milk","uncountable"],["animal","countable"],
+["advertising","uncountable"],["electricity","uncountable"],["food","uncountable"],["work","uncountable"]
+],
+ex2: [
+["I think this is a great news.","I think this is great news.","“News” là danh từ không đếm được, vì vậy không dùng “a/an” trước “news”. Ta nói “great news”, không nói “a great news”."],
+["They bought too many furniture and I think it was a waste of money.","They bought too much furniture and I think it was a waste of money.","“Furniture” là danh từ không đếm được nên dùng “much”, không dùng “many”. Ta nói “too much furniture”."],
+["There were so much reasons why they said little about themselves.","There were so many reasons why they said little about themselves.","“Reasons” là danh từ đếm được số nhiều nên dùng “many”: “so many reasons”."],
+["The number of time they spent sleeping per night increased steadily from 6 hours to 9 hours.","The amount of time they spent sleeping per night increased steadily from 6 hours to 9 hours.","“Time” khi mang nghĩa khoảng thời gian là danh từ không đếm được, vì vậy dùng “the amount of time”, không dùng “the number of time”."],
+["They checked two person at a time.","They checked two people at a time.","Dạng số nhiều thông dụng của “person” là “people”, vì vậy phải viết “two people”."],
+["I do not have many time.","I do not have much time.","“Time” ở đây là danh từ không đếm được nên dùng “much”: “much time”."],
+["The amount of books that they borrowed from the local library rose significantly during the period shown.","The number of books that they borrowed from the local library rose significantly during the period shown.","Dùng “the number of” với danh từ đếm được số nhiều như “books”. “Amount of” dùng với danh từ không đếm được."],
+["I love dog because they are very cute.","I love dogs because they are very cute.","Khi nói chung về loài/chó nói chung, dùng danh từ đếm được số nhiều “dogs”, không dùng “dog” số ít trong câu này."],
+["Last night she drank too many alcohol but she didn’t talk much about her ex-boyfriend.","Last night she drank too much alcohol but she didn’t talk much about her ex-boyfriend.","“Alcohol” là danh từ không đếm được nên dùng “much”, không dùng “many”: “too much alcohol”."],
+["There are many rooms in my house and each room has a lot of equipments.","There are many rooms in my house and each room has a lot of equipment.","“Equipment” là danh từ không đếm được và không có dạng số nhiều “equipments”. Ta nói “a lot of equipment”."],
+],
+ex3: [
+["Sự phát triển của trẻ (sự phát triển: development)","the development of children","Cấu trúc “the development of + danh từ” nghĩa là “sự phát triển của…”."],
+["Căn nhà của chị tôi","my sister’s house","“’s” được dùng để chỉ sự sở hữu: “my sister’s house” = căn nhà của chị tôi."],
+["Sự tăng trưởng của các thành phố lớn (sự tăng trưởng: growth)","the growth of big cities","Dùng cấu trúc “the growth of + danh từ” để diễn tả “sự tăng trưởng/phát triển của…”."],
+["Mái nhà của tòa nhà kia (mái nhà: roof, tòa nhà: building)","the roof of that building","Dùng “the roof of + tòa nhà/vật” để nói “mái của…”."],
+["Buổi họp ngày mai (buổi họp: meeting, ngày mai: tomorrow)","tomorrow’s meeting","Các cụm chỉ thời gian có thể dùng “’s” để diễn tả sự liên quan/sở hữu: “tomorrow’s meeting”."],
+["Quyển sách của bạn cô ấy","her friend’s book","“Her friend” là người sở hữu quyển sách nên dùng “her friend’s book”."],
+["Những người bạn của ba tôi","my father’s friends","“My father’s” chỉ sự sở hữu; “friends” là danh từ số nhiều vì có nhiều người bạn."],
+["Những lỗi lầm của cha cậu ấy (lỗi lầm: fault)","his father’s faults","“His father’s” chỉ người sở hữu; “faults” là danh từ đếm được số nhiều nên thêm “-s”."],
+["Sự mở rộng của tuyến đường bộ (sự mở rộng: expansion, tuyến đường bộ: road)","the expansion of the road","Dùng cấu trúc “the expansion of + danh từ” để diễn tả “sự mở rộng của…”."],
+["Những sự kiện của năm nay (sự kiện: event)","this year’s events","“This year’s” là cụm sở hữu chỉ thời gian, nghĩa là “của năm nay”. Vì có nhiều sự kiện nên dùng “events”."],
+],
+ex4: [
+["He decided go to that college and studied History.","He decided to go to that college and study History.","Sau “decide” dùng “to + V”: “decide to go”. Hai động từ “go” và “study” cần song song: “go … and study …”."],
+["I want to know why you promised doing that.","I want to know why you promised to do that.","“Promise” đi với “to + V”: “promise to do something”, không dùng “promise doing”."],
+["You need to spend more time to take care of him.","You need to spend more time taking care of him.","Cấu trúc “spend time + V-ing”: dành thời gian làm việc gì."],
+["She enjoys listen to music in her spare time.","She enjoys listening to music in her spare time.","“Enjoy” luôn đi với danh động từ V-ing: “enjoy listening”."],
+["I have a lot of difficulties learn English but I will try my best.","I have a lot of difficulties learning English but I will try my best.","Cấu trúc “have difficulties (in) + V-ing”: gặp khó khăn trong việc làm gì."],
+["The local government considered to change the plan.","The local government considered changing the plan.","“Consider” đi với V-ing khi mang nghĩa cân nhắc: “consider buying”."],
+["They are busy to do their homework.","They are busy doing their homework.","Cấu trúc “be busy + V-ing”: bận làm việc gì."],
+["He often practices speak English with his friends.","He often practices speaking English with his friends.","“Practice” đi với V-ing: “practice speaking English”."],
+["I’m a workaholic person, I’m used to work long hours.","I’m a workaholic person, I’m used to working long hours.","“Be used to” nghĩa là “quen với”, sau đó dùng danh từ hoặc V-ing: “be used to working”."],
+["She didn’t have much time but she managed go to the gym twice a week.","She didn’t have much time but she managed to go to the gym twice a week.","“Manage” đi với “to + V”, nghĩa là xoay xở/thành công làm việc gì: “manage to go”."],
+],
+ex5: [
+["She / enjoy / go / out / her friends / but / sometimes / she / just / want / be / alone.","She enjoys going out with her friends, but sometimes she just wants to be alone.","“Enjoy + V-ing”; “go out with + người”; “want + to V”."],
+["We / tend / eat / too much / fast food / and / I / think / we / need / change / our / eating habits / if / we / want / live / longer.","We tend to eat too much fast food, and I think we need to change our eating habits if we want to live longer.","“Tend + to V” = có xu hướng làm gì; “need + to V” = cần làm gì; “want + to V” = muốn làm gì."],
+["He / enjoy / hang / out / his friends / but / now / he / be / busy / prepare / his exam / so / he / have / to / stay / home.","He enjoys hanging out with his friends, but now he is busy preparing for his exam, so he has to stay home.","“Enjoy + V-ing”; “be busy + V-ing”; “prepare for + danh từ”."],
+["They / have / a lot / difficulties / deal / their new clients.","They have a lot of difficulties dealing with their new clients.","“Difficulty/difficulties + V-ing”; “deal with + danh từ” = giải quyết/làm việc với ai/cái gì."],
+["Children / these days / spend / a lot / time / watch TV / and / play / video games.","Children these days spend a lot of time watching TV and playing video games.","“Spend time + V-ing”; hai hoạt động sau “and” nên giữ song song ở dạng V-ing: “watching … and playing …”."],
+["Nowadays / parents / be / too busy / their work / so / they / not / have / much / time / their kids.","Nowadays, parents are too busy with their work, so they do not have much time for their kids.","“Be busy with + danh từ” = bận với việc gì; “time for + người” = thời gian dành cho ai."],
+["You / not / need / risk / do / that.","You don’t need to risk doing that.","“Need + to V”; “risk + V-ing” = liều/rủi ro làm việc gì."],
+["You / should / avoid / make / same / mistakes.","You should avoid making the same mistakes.","“Avoid” luôn đi với V-ing: “avoid making mistakes”."],
+["The earth’s temperatures / keep / increase / an alarming rate.","The earth’s temperatures keep increasing at an alarming rate.","“Keep + V-ing” = tiếp tục tăng/làm gì; “at an alarming rate” = với tốc độ đáng báo động."],
+["Women / tend / spend / a large / amount / money / buy / clothes / and / beauty products.","Women tend to spend a large amount of money buying clothes and beauty products.","“Tend + to V”; “spend money + V-ing” = tiêu tiền để làm việc gì."],
+],
+ex6: [
+["She is so beautiful / beautifully and she also sings very beautiful / beautifully.","beautiful; beautifully","“Beautiful” là tính từ mô tả người “she”; “beautifully” là trạng từ bổ nghĩa cho động từ “sings”."],
+["I think he is a good / well learner. He speaks English very good / well.","good; well","“Good” là tính từ đứng trước danh từ “learner”; “well” là trạng từ bổ nghĩa cho động từ “speaks”."],
+["Helen ran quick / quickly and fell into a hole. Thanks to her quick / quickly action, she could get out of it easily.","quickly; quick","“Ran” là động từ nên cần trạng từ “quickly”; “action” là danh từ nên cần tính từ “quick”."],
+["Oil prices have increased significant / significantly during the past few years.","significantly","Trạng từ “significantly” bổ nghĩa cho động từ “increased”, diễn tả mức độ tăng đáng kể."],
+["These people would make significant / significantly contributions to our company.","significant","Tính từ “significant” bổ nghĩa cho danh từ “contributions”."],
+["This will negative / negatively affect the development of any nations. This has a negative / negatively effect on the development of any nations.","negatively; negative","“Negatively” là trạng từ bổ nghĩa cho động từ “affect”; “negative” là tính từ bổ nghĩa cho danh từ “effect”."],
+["Can I stay up late / lately tonight? She’s developed some very strange habits late / lately.","late; lately","“Late” = muộn, trái nghĩa với “early”; “lately” = gần đây. Hai từ này khác nhau về nghĩa và từ loại."],
+["He works very hard / hardly because he wants to get promoted. I hardly / hard ever listen to rock music.","hard; hardly","“Work hard” = làm việc chăm chỉ; “hardly ever” = hầu như không bao giờ. “Hard” ở đây là trạng từ, còn “hardly” có nghĩa gần như không."],
+["You should make healthy / healthily food choices if you want to live longer.","healthy","“Healthy” là tính từ bổ nghĩa cho cụm danh từ “food choices”, vì vậy phải dùng “healthy”, không dùng “healthily”."],
+["From 1990 to 1992, China saw a steady / steadily increase in its crime rates, while the figure for the US dropped steady / steadily.","steady; steadily","“Steady” là tính từ bổ nghĩa cho danh từ “increase”; “steadily” là trạng từ bổ nghĩa cho động từ “dropped”."],
+],
+ex7: [
+["Bạn nên suy nghĩ kỹ càng hơn trước khi đưa ra quyết định.","You should think more carefully before making a decision.","“Carefully” là trạng từ bổ nghĩa cho “think”, nghĩa là suy nghĩ một cách cẩn thận. Sau “before” khi chủ ngữ được hiểu là cùng người, dùng V-ing: “before making a decision”."],
+["Tỷ lệ thất nghiệp ở Anh giảm nhanh chóng từ 2000 đến 2005.","The unemployment rate in England decreased rapidly from 2000 to 2005.","“Rapidly” là trạng từ bổ nghĩa cho “decreased”, nghĩa là giảm nhanh chóng."],
+["Điều này có thể có những hậu quả nghiêm trọng cho lĩnh vực này.","This could cause serious consequences for this field.","“Serious” là tính từ bổ nghĩa cho “consequences”; “for this field” chỉ lĩnh vực chịu hậu quả."],
+["Điều này có thể giúp bạn đưa ra những quyết định khôn ngoan.","This could help you make wise decisions.","Sau “help”, có thể dùng “V nguyên mẫu” mà không cần “to”: “help you make decisions”."],
+["Thất nghiệp ảnh hưởng tiêu cực đến sự tăng trưởng kinh tế của Việt Nam.","Unemployment negatively affects Vietnam’s economic growth.","“Negatively” là trạng từ bổ nghĩa cho “affects”, nghĩa là ảnh hưởng theo hướng tiêu cực."],
+["Những học sinh này học cách suy nghĩ 1 cách tự lập và làm việc hiệu quả trong 1 môi trường áp lực cao.","These students learn to think independently and work effectively in a high-pressure environment.","“Independently” và “effectively” là trạng từ, lần lượt bổ nghĩa cho “think” và “work”. “High-pressure” là tính từ ghép bổ nghĩa cho “environment”."],
+["Khả năng lãnh đạo là 1 trong những kỹ năng quan trọng nhất trong thế giới ngày nay.","Leadership is one of the most important skills in today’s world.","Sau “one of the” dùng cấu trúc “one of the + tính từ so sánh nhất + danh từ số nhiều”: “one of the most important skills”."],
+["Từ 1990 tới 1991, số người sử dụng xe hơi tăng chậm.","From 1990 to 1991, the number of car users increased slowly.","“Slowly” là trạng từ bổ nghĩa cho “increased”, nghĩa là tăng chậm."],
+["Điều này có thể ảnh hưởng đến những mối quan hệ cá nhân của tôi.","This could affect my personal relationships.","“Personal” là tính từ bổ nghĩa cho “relationships”, nghĩa là các mối quan hệ cá nhân."],
+["Anh ta là 1 người may mắn.","He is a lucky person.","“Lucky” là tính từ mô tả “person”, nghĩa là may mắn."],
+],
+ex8: [
+["We quickly got boring / bored with that film. It was so boring / bored.","bored; boring","“Bored” diễn tả cảm xúc của người; “boring” mô tả sự vật/sự việc gây ra cảm xúc đó. Vì vậy: “We got bored” nhưng “the film was boring”."],
+["Working long hours makes me feel tired / tiring and exhausted / exhausting.","tired; exhausted","Cả “tired” và “exhausted” đều mô tả trạng thái/cảm giác của người nói, nên dùng dạng “-ed”."],
+["She loves her job because she thinks it is a satisfied / satisfying job.","satisfying","Công việc tạo ra cảm giác hài lòng, nên dùng “satisfying”. “Satisfied” dùng để nói người cảm thấy hài lòng."],
+["I was disappointed / disappointing by the quality of the wine.","disappointed","Người nói là người cảm thấy thất vọng, nên dùng “disappointed” (-ed)."],
+["The instructions on the box are very confused / confusing.","confusing","Các hướng dẫn gây ra sự bối rối, nên dùng “confusing” (-ing)."],
+["I’m really interested / interesting in pop music. It always makes me feel relaxed / relaxing.","interested; relaxed","“Interested” diễn tả cảm xúc của người; “relaxed” diễn tả trạng thái thư giãn mà người đó cảm nhận. Dạng “-ed” thường dùng cho cảm xúc của người."],
+["I often listen to “You Raise Me Up” whenever I feel depressed / depressing.","depressed","Người đó cảm thấy chán nản, nên dùng “depressed” (-ed)."],
+["The children were exciting / excited about opening their presents.","excited","Bọn trẻ là người có cảm xúc, nên dùng “excited” (-ed)."],
+],
+ex9: [
+["Các mẫu quảng cáo cung cấp cho khách hàng nhiều thông tin về sản phẩm và dịch vụ.","Advertisements provide customers with a lot of information about products and services.","“Advertisements” là danh từ đếm được số nhiều; “information” là danh từ không đếm được nên không dùng “informations”."],
+["Kết quả là, họ có thể chọn lựa những sản phẩm tốt nhất với giá cả hợp lý.","As a result, they can choose the best products at reasonable prices.","“Reasonable” là tính từ bổ nghĩa cho “prices”; “the best” là dạng so sánh nhất của “good”."],
+["Ngày nay, trẻ em có xu hướng tiêu thụ quá nhiều thức ăn nhanh và nước ngọt.","These days, children tend to consume too much fast food and soft drinks.","“Tend to + V” = có xu hướng làm gì. “Fast food” là danh từ không đếm được nên dùng “too much”; “soft drinks” là danh từ đếm được số nhiều nên dùng “too many” nếu cần."],
+["Hậu quả là, chúng trở nên thừa cân và mắc nhiều vấn đề về sức khỏe.","As a result, they become overweight and suffer from various health problems.","“Overweight” là tính từ nghĩa là thừa cân. “Suffer from” đi với cụm danh từ: “suffer from various health problems”."],
+["Ô nhiễm không khí ảnh hưởng nghiêm trọng tới sức khỏe của con người.","Air pollution seriously affects human health.","“Seriously” là trạng từ bổ nghĩa cho “affects”. “Health” trong nghĩa sức khỏe nói chung là danh từ không đếm được."],
+["Ngày nay, cha mẹ rất bận rộn với công việc của họ nên họ không có nhiều thời gian cho con cái của họ.","Nowadays, parents are very busy with their work, so they do not have much time for their children.","“Busy with + danh từ” = bận với việc gì. “Time” là danh từ không đếm được nên dùng “much time”."],
+["Các thành viên trong gia đình nên dành thời gian ăn cơm cùng nhau và đi du lịch cùng nhau.","Family members should spend time having meals together and travelling together.","“Spend time + V-ing”. Hai hoạt động “having meals” và “travelling” được giữ song song ở dạng V-ing."],
+["Ngày nay, nhiều học sinh quyết định đi du học để có 1 tương lai tốt đẹp hơn.","Nowadays, many students decide to study abroad to have a better future.","“Decide + to V” = quyết định làm gì. “Better” là dạng so sánh hơn của “good”."],
+["Bạn nên tránh mắc lại những lỗi tương tự.","You should avoid making the same mistakes.","“Avoid + V-ing” = tránh làm gì. “The same” có thể đi trước danh từ số nhiều: “the same mistakes”."],
+["Cô ấy đang cân nhắc mua 1 chiếc máy tính mới.","She is considering buying a new computer.","“Consider” đi với V-ing khi mang nghĩa cân nhắc: “consider buying”."],
+["Thu nhập này cho phép họ sống 1 cách thoải mái hơn.","This income allows them to live more comfortably.","“Allow + tân ngữ + to V” = cho phép ai làm gì. “Comfortably” là trạng từ bổ nghĩa cho “live”."],
+["Chúng ta cần thay đổi thói quen ăn uống của chúng ta.","We need to change our eating habits.","“Need to + V” = cần làm gì. Trong “eating habits”, “eating” bổ nghĩa cho “habits”, tạo thành cụm “thói quen ăn uống”."],
+["Tiếng Anh là 1 trong những môn học quan trọng nhất tại trường học.","English is one of the most important subjects at school.","Cấu trúc “one of the most + tính từ + danh từ số nhiều” dùng để nói “một trong những … nhất”."],
+["Chơi game có thể có ảnh hưởng tiêu cực đến sự phát triển của trẻ.","Playing games can negatively affect children’s development.","“Negatively” là trạng từ bổ nghĩa cho “affect”. “Development” là danh từ, nghĩa là sự phát triển."],
+["Ngày nay, trẻ em dành quá nhiều thời gian xem TV hay chơi game thay vì tham gia vào các hoạt động thể chất như bóng đá hay bóng rổ.","Nowadays, children spend too much time watching TV or playing games instead of taking part in physical activities such as football or basketball.","“Spend time + V-ing” = dành thời gian làm gì. “Instead of + V-ing” = thay vì làm gì. “Physical” là tính từ bổ nghĩa cho “activities”."]
+]
+};
+
+function norm(s){
+ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+ .replace(/[’']/g,"'").replace(/[“”]/g,'"')
+ .replace(/\s+/g," ").replace(/[.,!?;:]/g,"").trim();
+}
+function wordNorm(s){return norm(s).replace(/\b(the|a|an)\b/g,"").replace(/\s+/g," ").trim();}
+function similarity(a,b){
+ a=norm(a); b=norm(b); if(!a)return 0; if(a===b)return 1;
+ const A=new Set(a.split(" ")), B=new Set(b.split(" "));
+ let inter=0; A.forEach(x=>{if(B.has(x))inter++}); return inter/Math.max(A.size,B.size);
+}
+function makeTextSection(id, arr){
+ const box=document.getElementById(id+"q");
+ box.innerHTML=arr.map((x,i)=>`<div class="q" id="${id}-${i}">
+ <div class="qnum">${i+1}. ${x[0]}</div>
+ <textarea id="${id}a${i}" placeholder="Type your answer here..."></textarea>
+ <div class="feedback" id="${id}f${i}"></div>
+ </div>`).join("");
+}
+function feedback(id,i,ok,ans,exp){
+ const el=document.getElementById(id+"f"+i); el.className="feedback "+(ok?"ok":"bad");
+ el.innerHTML=ok?`✓ Correct!<div class="explain"><b>Giải thích:</b> ${exp}</div>`:`✗ Not quite.<div class="answer"><b>Suggested answer:</b> ${ans}</div><div class="explain"><b>Giải thích:</b> ${exp}</div>`;
+}
+function gradeText(id){
+ const arr=data[id], mode=(id==="ex3"||id==="ex5")?"loose":"normal"; let score=0;
+ arr.forEach((x,i)=>{
+   const v=document.getElementById(id+"a"+i).value;
+   let sim=similarity(v,x[1]);
+   // Open translation/sentence tasks: accept close equivalents; require a reasonable amount of the answer.
+   let ok=sim>= (mode==="loose"?.82:.86);
+   if(id==="ex2"||id==="ex4") ok=sim>=.88;
+   if(!v.trim()) ok=false;
+   if(ok)score++;
+   feedback(id,i,ok,x[1],x[2]);
+ });
+ document.getElementById("score"+id.slice(2)).textContent=`Score: ${score} / ${arr.length}`;
+ updateOverall();
+}
+function nounExplain(word,type){
+ const reasons={
+  equipment:"“Equipment” là danh từ không đếm được, chỉ thiết bị nói chung; không dùng “equipments”.",
+  tree:"“Tree” là danh từ đếm được: one tree, two trees.",
+  news:"“News” là danh từ không đếm được: some news, a piece of news; không nói “a news”.",
+  chair:"“Chair” là danh từ đếm được: a chair, two chairs.",
+  transportation:"“Transportation” thường là danh từ không đếm được khi nói về phương tiện/giao thông nói chung.",
+  furniture:"“Furniture” là danh từ không đếm được; dùng “a piece of furniture”, không dùng “furnitures”.",
+  person:"“Person” là danh từ đếm được: one person, two people.",
+  money:"“Money” là danh từ không đếm được; không nói “two moneys”.",
+  Physics:"“Physics” là tên môn học nên được dùng như danh từ không đếm được.",
+  rice:"“Rice” là danh từ không đếm được khi nói về gạo nói chung.",
+  sunshine:"“Sunshine” là danh từ không đếm được, không dùng số nhiều trong nghĩa thông thường.",
+  experience:"“Experience” có thể đếm được khi nói về một trải nghiệm cụ thể, nhưng trong danh sách này được dùng theo nghĩa kinh nghiệm nói chung nên là không đếm được.",
+  advice:"“Advice” là danh từ không đếm được; nói “a piece of advice”, không nói “an advice”.",
+  happiness:"“Happiness” là danh từ trừu tượng không đếm được.",
+  milk:"“Milk” là danh từ không đếm được khi nói về sữa nói chung.",
+  animal:"“Animal” là danh từ đếm được: one animal, two animals.",
+  advertising:"“Advertising” là danh từ không đếm được khi nói về hoạt động quảng cáo nói chung.",
+  electricity:"“Electricity” là danh từ không đếm được.",
+  food:"“Food” thường là danh từ không đếm được khi nói về thức ăn nói chung.",
+  work:"“Work” là danh từ không đếm được khi nói về công việc nói chung; “a job” mới là một công việc cụ thể."
+ };
+ return reasons[word] || (type==="countable"?`“${word}” là danh từ đếm được, có thể dùng với a/an hoặc số đếm.`:`“${word}” là danh từ không đếm được, thường không dùng trực tiếp với a/an hoặc số đếm.`);
+}
+function grade1(){
+ let score=0;
+ data.ex1.forEach((x,i)=>{
+   const sel=document.querySelector(`input[name="n${i}"]:checked`);
+   const ok=sel && sel.value===x[1]; if(ok)score++;
+   const f=document.getElementById("nfb"+i); f.className="feedback "+(ok?"ok":"bad");
+   f.innerHTML=ok?`✓ Correct! ${x[0]} is ${x[1]}.<div class="explain">${nounExplain(x[0],x[1])}</div>`:`✗ Correct answer: <b>${x[1]}</b>.<div class="explain">${nounExplain(x[0],x[1])}</div>`;
+ });
+ document.getElementById("score1").textContent=`Score: ${score} / ${data.ex1.length}`;
+ updateOverall();
+}
+function grade6(){
+ let score=0;
+ data.ex6.forEach((x,i)=>{
+   const sel=document.querySelector(`input[name="a6-${i}"]:checked`);
+   const ok=sel && sel.value===x[1]; if(ok)score++;
+   const f=document.getElementById("f6-"+i); f.className="feedback "+(ok?"ok":"bad");
+   f.innerHTML=ok?`✓ Correct!<div class="explain"><b>Giải thích:</b> ${x[2]}</div>`:`✗ Correct answer: <b>${x[1]}</b>.<div class="explain"><b>Giải thích:</b> ${x[2]}</div>`;
+ });
+ document.getElementById("score6").textContent=`Score: ${score} / ${data.ex6.length}`; updateOverall();
+}
+function grade8(){
+ let score=0;
+ data.ex8.forEach((x,i)=>{
+   const sel=document.querySelector(`input[name="a8-${i}"]:checked`);
+   const ok=sel && sel.value===x[1]; if(ok)score++;
+   const f=document.getElementById("f8-"+i); f.className="feedback "+(ok?"ok":"bad");
+   f.innerHTML=ok?`✓ Correct!<div class="explain"><b>Giải thích:</b> ${x[2]}</div>`:`✗ Correct answer: <b>${x[1]}</b>.<div class="explain"><b>Giải thích:</b> ${x[2]}</div>`;
+ });
+ document.getElementById("score8").textContent=`Score: ${score} / ${data.ex8.length}`; updateOverall();
+}
+function resetSection(sectionId){
+ const sec=document.getElementById(sectionId); sec.querySelectorAll("input,textarea").forEach(x=>{if(x.type==="radio")x.checked=false;else x.value=""});
+ sec.querySelectorAll(".feedback").forEach(x=>x.className="feedback");
+ sec.querySelectorAll(".score").forEach(x=>x.textContent="");
+ updateOverall();
+}
+function updateOverall(){
+ let got=0,total=0;
+ for(let n=1;n<=9;n++){
+   const s=document.getElementById("score"+n);
+   if(s && s.textContent){
+     const m=s.textContent.match(/Score: (\d+) \/ (\d+)/); if(m){got+=+m[1];total+=+m[2];}
+   }
+ }
+ document.getElementById("overall").textContent=`${got} / ${total}`;
+}
+document.getElementById("nounQuestions").innerHTML=data.ex1.map((x,i)=>`
+<div class="q"><div class="qnum">${i+1}. ${x[0]}</div>
+<label class="option"><input type="radio" name="n${i}" value="countable"> Countable noun</label>
+<label class="option"><input type="radio" name="n${i}" value="uncountable"> Uncountable noun</label>
+<div class="feedback" id="nfb${i}"></div></div>`).join("");
+
+makeTextSection("ex2",data.ex2); makeTextSection("ex3",data.ex3); makeTextSection("ex4",data.ex4);
+makeTextSection("ex5",data.ex5); makeTextSection("ex7",data.ex7); makeTextSection("ex9",data.ex9);
+
+document.getElementById("ex6q").innerHTML=data.ex6.map((x,i)=>{
+ const opts=x[1].split(";").map(v=>v.trim());
+ // show each choice pair exactly as in source sentence
+ return `<div class="q"><div class="qnum">${i+1}. ${x[0]}</div>
+ ${opts.map(v=>`<label class="option"><input type="radio" name="a6-${i}" value="${v}"> ${v}</label>`).join("")}
+ <div class="feedback" id="f6-${i}"></div></div>`;
+}).join("");
+
+document.getElementById("ex8q").innerHTML=data.ex8.map((x,i)=>{
+ const opts=x[1].split(";").map(v=>v.trim());
+ return `<div class="q"><div class="qnum">${i+1}. ${x[0]}</div>
+ ${opts.map(v=>`<label class="option"><input type="radio" name="a8-${i}" value="${v}"> ${v}</label>`).join("")}
+ <div class="feedback" id="f8-${i}"></div></div>`;
+}).join("");
+</script>
+</body>
+</html>
